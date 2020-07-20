@@ -1,11 +1,12 @@
 <template>
   <v-app>
     <v-app-bar app color="primary" dark>
-      <span>TODOリスト</span>
+      <span>就活ToDo</span>
       <v-spacer></v-spacer>
     </v-app-bar>
 
     <v-content>
+      <router-view></router-view>
     </v-content>
   </v-app>
 </template>
