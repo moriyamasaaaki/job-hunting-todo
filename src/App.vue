@@ -1,9 +1,12 @@
 <template>
   <v-app>
     <v-app-bar app color="primary" dark>
-      <v-app-bar-nav-icon @click.stop="openSideMenu"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click.stop="toggleSideMenu"></v-app-bar-nav-icon>
       <router-link to="/">
         <span>就活ToDo</span>
+        <div class="my-2">
+          <v-btn @click="login">ログイン</v-btn>
+        </div>
       </router-link>
       <v-spacer></v-spacer>
     </v-app-bar>
@@ -16,6 +19,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 import SideNav from "@/components/SideNav";
 export default {
   name: "App",
@@ -29,9 +33,7 @@ export default {
   }),
 
   methods: {
-    openSideMenu() {
-      this.$store.dispatch("toggleSideMenu");
-    }
+    ...mapActions(["toggleSideMenu", "login"])
   }
 };
 </script>
