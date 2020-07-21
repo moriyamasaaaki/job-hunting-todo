@@ -8,16 +8,17 @@
         md="6"
         lg="3"
         xl="3"
-        v-for="todo in 15"
+        v-for="todo in todos"
         :key="todo"
       >
         <v-card class="mx-auto">
           <v-card-text>
-            <div>一次選考</div>
-            <p class="display-1 text--primary">企業名</p>
-            <p>07/20 (月）</p>
+            <div>{{ todo.status }}</div>
+            <p class="display-1 text--primary">{{ todo.name }}</p>
+            <p>{{ todo.time }}</p>
+            <p>{{ todo.tool }}</p>
             <div class="text--primary">
-              会社の概要や個人のメモが入ります。会社の概要や個人のメモが入ります。
+              {{ todo.text }}
             </div>
           </v-card-text>
           <v-card-actions class="justify-space-between">
@@ -38,7 +39,17 @@
 </template>
 
 <script>
-export default {};
+export default {
+  created() {
+    this.todos = this.$store.state.todos;
+  },
+
+  data() {
+    return {
+      todos: []
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
