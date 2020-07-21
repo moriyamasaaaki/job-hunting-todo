@@ -38,5 +38,9 @@ export default new Vuex.Store({
       firebase.auth().signOut();
     }
   },
+  getters: {
+    userName: state => (state.login_user ? state.login_user.displayName : ""),
+    photoURL: state => (state.login_user ? state.login_user.photoURL : "")
+  },
   modules: {}
 });

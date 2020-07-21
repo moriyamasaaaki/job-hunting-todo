@@ -3,11 +3,12 @@
     <v-navigation-drawer v-model="$store.state.drawer" absolute temporary>
       <v-list-item>
         <v-list-item-avatar>
-          <v-img src="/img/user-img.png"></v-img>
+          <v-img v-if="photoURL" :src="photoURL"></v-img>
+          <v-img v-else src="/img/user-img.png"></v-img>
         </v-list-item-avatar>
 
         <v-list-item-content>
-          <v-list-item-title>守屋 雅章</v-list-item-title>
+          <v-list-item-title>{{ userName }}</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
 
@@ -32,6 +33,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   data() {
     return {
@@ -40,6 +42,10 @@ export default {
         { title: "プロフィール", icon: "mdi-account", link: "/profile" }
       ]
     };
+  },
+
+  computed: {
+    ...mapGetters(["userName", "photoURL"])
   }
 };
 </script>
