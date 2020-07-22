@@ -41,6 +41,7 @@ export default {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         this.setLoginUser(user);
+        this.fetchTodos();
       } else {
         this.logoutUser();
       }
@@ -53,7 +54,8 @@ export default {
       "login",
       "setLoginUser",
       "logout",
-      "logoutUser"
+      "logoutUser",
+      "fetchTodos"
     ])
   }
 };

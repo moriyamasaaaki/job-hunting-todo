@@ -41,13 +41,31 @@ export default new Vuex.Store({
     logout() {
       firebase.auth().signOut();
     },
-    addTodo({ commit }, todo) {
+    addTodo({ getters, commit }, todo) {
+      if (getters.uid) {
+        firebase
+          .firestore()
+          .collection(`users/${getters.uid}/todos`)
+          .add(todo);
+      }
       commit("addTodo", todo);
+    },
+    fetchTodos({ getters, commit }) {
+      firebase
+        .firestore()
+        .collection(`users/${getters.uid}/todos`)
+        .get()
+        .then(todos => {
+          todos.forEach(todo => {
+            commit("addTodo", todo.data());
+          });
+        });
     }
   },
   getters: {
     userName: state => (state.login_user ? state.login_user.displayName : ""),
-    photoURL: state => (state.login_user ? state.login_user.photoURL : "")
+    photoURL: state => (state.login_user ? state.login_user.photoURL : ""),
+    uid: state => (state.login_user ? state.login_user.uid : null)
   },
   modules: {}
 });
