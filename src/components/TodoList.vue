@@ -9,7 +9,7 @@
         lg="3"
         xl="3"
         v-for="todo in todos"
-        :key="todo"
+        :key="todo.id"
       >
         <v-card class="mx-auto">
           <v-card-text>
@@ -24,9 +24,20 @@
           <v-card-actions class="justify-space-between">
             <v-btn text color="primary">詳細を見る</v-btn>
             <div>
-              <v-btn class="card-button" color="accent" fab outlined small dark>
-                <v-icon>mdi-pencil</v-icon>
-              </v-btn>
+              <router-link
+                :to="{ name: 'todo_edit', params: { todo_id: todo.id } }"
+              >
+                <v-btn
+                  class="card-button"
+                  color="accent"
+                  fab
+                  outlined
+                  small
+                  dark
+                >
+                  <v-icon>mdi-pencil</v-icon>
+                </v-btn>
+              </router-link>
               <v-btn class="card-button" color="error" fab outlined small dark>
                 <v-icon>mdi-delete</v-icon>
               </v-btn>
@@ -47,7 +58,7 @@ export default {
   data() {
     return {
       todos: []
-    }
+    };
   }
 };
 </script>

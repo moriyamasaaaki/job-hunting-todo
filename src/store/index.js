@@ -20,7 +20,8 @@ export default new Vuex.Store({
     toggleSideMenu(state) {
       state.drawer = !state.drawer;
     },
-    addTodo(state, todo) {
+    addTodo(state, { id, todo }) {
+      todo.id = id;
       state.todos.push(todo);
     }
   },
@@ -46,9 +47,11 @@ export default new Vuex.Store({
         firebase
           .firestore()
           .collection(`users/${getters.uid}/todos`)
-          .add(todo);
+          .add(todo)
+          .then(todo => {
+            commit("addTodo", { id: todo.id, todo });
+          });
       }
-      commit("addTodo", todo);
     },
     fetchTodos({ getters, commit }) {
       firebase
@@ -57,7 +60,7 @@ export default new Vuex.Store({
         .get()
         .then(todos => {
           todos.forEach(todo => {
-            commit("addTodo", todo.data());
+            commit("addTodo", { id: todo.id, todo: todo.data() });
           });
         });
     }
@@ -65,7 +68,8 @@ export default new Vuex.Store({
   getters: {
     userName: state => (state.login_user ? state.login_user.displayName : ""),
     photoURL: state => (state.login_user ? state.login_user.photoURL : ""),
-    uid: state => (state.login_user ? state.login_user.uid : null)
+    uid: state => (state.login_user ? state.login_user.uid : null),
+    getTodoId: state => id => state.todos.find(todo => todo.id === id)
   },
   modules: {}
 });
