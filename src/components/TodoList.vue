@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <h1>ToDo一覧</h1>
+    <h1>ToDoリスト</h1>
     <v-row>
       <v-col
         cols="12"
@@ -11,7 +11,7 @@
         v-for="todo in todos"
         :key="todo.id"
       >
-        <v-card class="mx-auto">
+        <v-card class="mx-auto" v-if="todos">
           <v-card-text>
             <div>{{ todo.status }}</div>
             <p class="display-1 text--primary">{{ todo.name }}</p>
@@ -52,6 +52,14 @@
         </v-card>
       </v-col>
     </v-row>
+    <div class="text-center">
+      <v-progress-circular
+        :size="50"
+        v-show="loading"
+        color="primary"
+        indeterminate
+      ></v-progress-circular>
+    </div>
   </v-container>
 </template>
 
@@ -59,12 +67,13 @@
 import { mapActions } from "vuex";
 export default {
   created() {
-    this.todos = this.$store.state.todos;
+    this.getTodos();
   },
 
   data() {
     return {
-      todos: []
+      todos: [],
+      loading: false
     };
   },
 
@@ -73,6 +82,13 @@ export default {
       if (confirm(`${name}のToDoを本当に削除してもよろしいですか？`)) {
         this.deleteTodo({ id });
       }
+    },
+    getTodos() {
+      this.loading = true;
+      setTimeout(() => {
+        this.todos = this.$store.state.todos;
+        this.loading = false;
+      }, 2000);
     },
     ...mapActions(["deleteTodo"])
   }
