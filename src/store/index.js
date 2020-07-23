@@ -29,6 +29,12 @@ export default new Vuex.Store({
         todo.id === id;
       });
       state.todos[index] = todo;
+    },
+    deleteTodo(state, { id }) {
+      const index = state.todos.findIndex(todo => {
+        todo.id === id;
+      });
+      state.todos.splice(index, 1);
     }
   },
   actions: {
@@ -68,6 +74,18 @@ export default new Vuex.Store({
           .update(todo)
           .then(() => {
             commit("updateTodo", { id, todo });
+          });
+      }
+    },
+    deleteTodo({ getters, commit }, { id }) {
+      if (getters.uid) {
+        firebase
+          .firestore()
+          .collection(`users/${getters.uid}/todos`)
+          .doc(id)
+          .delete()
+          .then(() => {
+            commit("deleteTodo", { id });
           });
       }
     },
