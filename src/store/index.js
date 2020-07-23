@@ -23,6 +23,12 @@ export default new Vuex.Store({
     addTodo(state, { id, todo }) {
       todo.id = id;
       state.todos.push(todo);
+    },
+    updateTodo(state, { id, todo }) {
+      const index = state.todos.findIndex(todo => {
+        todo.id === id;
+      });
+      state.todos[index] = todo;
     }
   },
   actions: {
@@ -50,6 +56,18 @@ export default new Vuex.Store({
           .add(todo)
           .then(todo => {
             commit("addTodo", { id: todo.id, todo });
+          });
+      }
+    },
+    updateTodo({ getters, commit }, { id, todo }) {
+      if (getters.uid) {
+        firebase
+          .firestore()
+          .collection(`users/${getters.uid}/todos`)
+          .doc(id)
+          .update(todo)
+          .then(() => {
+            commit("updateTodo", { id, todo });
           });
       }
     },

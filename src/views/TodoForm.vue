@@ -10,17 +10,17 @@
             <v-col cols="12">
               <v-text-field
                 label="企業名"
-                v-model="todos.name"
+                v-model="todo.name"
                 required
               ></v-text-field>
             </v-col>
             <v-col cols="12" md="6">
-              <v-text-field label="時間帯" v-model="todos.time"></v-text-field>
+              <v-text-field label="時間帯" v-model="todo.time"></v-text-field>
             </v-col>
             <v-col cols="12" md="6">
               <v-text-field
                 label="場所"
-                v-model="todos.place"
+                v-model="todo.place"
                 required
               ></v-text-field>
             </v-col>
@@ -35,7 +35,7 @@
                   'Microsoft Teams'
                 ]"
                 label="面接方法"
-                v-model="todos.tool"
+                v-model="todo.tool"
                 required
               ></v-select>
             </v-col>
@@ -52,14 +52,14 @@
                   'インターン'
                 ]"
                 label="選考状態"
-                v-model="todos.status"
+                v-model="todo.status"
               ></v-autocomplete>
             </v-col>
             <v-col cols="12">
               <v-textarea
                 name="input-7-1"
                 label="自由記述覧"
-                v-model="todos.text"
+                v-model="todo.text"
               ></v-textarea>
             </v-col>
           </v-row>
@@ -68,42 +68,40 @@
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn color="blue darken-1" text @click="back">キャンセル</v-btn>
-        <v-btn
-          color="blue darken-1"
-          text
-          @click="
-            {
-            }
-          "
-          >作成</v-btn
-        >
+        <v-btn color="blue darken-1" text @click="submit">作成</v-btn>
       </v-card-actions>
     </v-card>
   </div>
 </template>
 
 <script>
-// import { mapActions } from "vuex";
+import { mapActions } from "vuex";
 export default {
   created() {
     if (!this.$route.params.todo_id) return;
     const todo = this.$store.getters.getTodoId(this.$route.params.todo_id);
     if (todo) {
-      this.todos = todo;
+      this.todo = todo;
     } else {
       this.$router.push("/");
     }
   },
   data() {
     return {
-      todos: {}
+      todo: {}
     };
   },
   methods: {
-    submit() {},
+    submit() {
+      if (this.$route.params.todo_id) {
+        this.updateTodo({ id: this.$route.params.todo_id, todo: this.todo });
+      }
+      this.$router.push("/");
+    },
     back() {
       this.$router.push("/");
-    }
+    },
+    ...mapActions(["updateTodo"])
   }
 };
 </script>
