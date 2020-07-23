@@ -17,9 +17,7 @@
             <p class="display-1 text--primary">{{ todo.name }}</p>
             <p>{{ todo.time }}</p>
             <p>{{ todo.tool }}</p>
-            <div class="text--primary">
-              {{ todo.text }}
-            </div>
+            <div class="text--primary">{{ todo.text }}</div>
           </v-card-text>
           <v-card-actions class="justify-space-between">
             <v-btn text color="primary">詳細を見る</v-btn>
@@ -38,7 +36,15 @@
                   <v-icon>mdi-pencil</v-icon>
                 </v-btn>
               </router-link>
-              <v-btn class="card-button" color="error" fab outlined small dark>
+              <v-btn
+                class="card-button"
+                @click="deleteConfirm(todo.id, todo.name)"
+                color="error"
+                fab
+                outlined
+                small
+                dark
+              >
                 <v-icon>mdi-delete</v-icon>
               </v-btn>
             </div>
@@ -50,6 +56,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   created() {
     this.todos = this.$store.state.todos;
@@ -59,6 +66,15 @@ export default {
     return {
       todos: []
     };
+  },
+
+  methods: {
+    deleteConfirm(id, name) {
+      if (confirm(`${name}のToDoを本当に削除してもよろしいですか？`)) {
+        this.deleteTodo({ id });
+      }
+    },
+    ...mapActions(["deleteTodo"])
   }
 };
 </script>
