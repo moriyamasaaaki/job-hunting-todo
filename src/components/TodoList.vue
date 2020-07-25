@@ -1,7 +1,7 @@
 <template>
-  <v-container>
+  <v-container class="todo-list">
     <h1>ToDoリスト</h1>
-    <v-row>
+    <v-row v-if="todos && todos.length > 0">
       <v-col
         cols="12"
         sm="6"
@@ -11,7 +11,7 @@
         v-for="todo in todos"
         :key="todo.id"
       >
-        <v-card class="mx-auto" v-if="todos">
+        <v-card class="mx-auto">
           <v-card-text>
             <div>{{ todo.status }}</div>
             <p class="display-1 text--primary">{{ todo.name }}</p>
@@ -52,6 +52,9 @@
         </v-card>
       </v-col>
     </v-row>
+    <div class="no-text" v-else>
+      <p>ToDoを作成してください。</p>
+    </div>
     <div class="text-center">
       <v-progress-circular
         :size="50"
@@ -72,7 +75,7 @@ export default {
 
   data() {
     return {
-      todos: [],
+      todos: "",
       loading: false
     };
   },
@@ -102,5 +105,14 @@ export default {
 
 a {
   text-decoration: none;
+}
+
+.no-text {
+  margin: 80px 0;
+  text-align: center;
+  p {
+    font-size: 24px;
+    font-weight: 700;
+  }
 }
 </style>
