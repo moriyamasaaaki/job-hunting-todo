@@ -8,7 +8,8 @@ export default new Vuex.Store({
   state: {
     login_user: null,
     drawer: false,
-    todos: []
+    todos: [],
+    profile: []
   },
   mutations: {
     setLoginUser(state, user) {
@@ -35,6 +36,9 @@ export default new Vuex.Store({
         todo.id === id;
       });
       state.todos.splice(index, 1);
+    },
+    addProfile(state, { profile }) {
+      state.profile.push(profile);
     }
   },
   actions: {
@@ -99,6 +103,18 @@ export default new Vuex.Store({
             commit("addTodo", { id: todo.id, todo: todo.data() });
           });
         });
+    },
+
+    addProfile({ getters, commit }, profile) {
+      if (getters.uid) {
+        firebase
+          .firestore()
+          .doc(`profiles/${getters.uid}`)
+          .set(profile)
+          .then(profile => {
+            commit("addProfile", { id: getters.id, profile });
+          });
+      }
     }
   },
   getters: {
