@@ -29,6 +29,11 @@ const routes = [
     path: "/todos/:todo_id?/edit",
     name: "todo_edit",
     component: () => import("../views/TodoForm.vue")
+  },
+  {
+    path: "/todos/:todo_id?",
+    name: "todo_detail",
+    component: () => import("../views/TodoDetail.vue")
   }
 ];
 
