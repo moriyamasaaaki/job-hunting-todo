@@ -62,6 +62,13 @@
                 v-model="todo.text"
               ></v-textarea>
             </v-col>
+            <v-col cols="12">
+              <v-textarea
+                name="input-7-1"
+                label="志望動機"
+                v-model="todo.resume"
+              ></v-textarea>
+            </v-col>
           </v-row>
         </v-container>
       </v-card-text>

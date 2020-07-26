@@ -1,6 +1,6 @@
 <template>
   <div class="todo-detail">
-    <h1>{{ todo.name }}ToDo詳細</h1>
+    <h1 class="todo-detail__title">{{ todo.name }}のToDo詳細</h1>
     <v-card class="mx-auto">
       <v-card-text>
         <div>{{ todo.status }}</div>
@@ -8,14 +8,10 @@
         <p>{{ todo.time }}</p>
         <p>{{ todo.tool }}</p>
         <div class="text--primary">{{ todo.text }}</div>
+        <div class="text--primary">{{ todo.resume }}</div>
       </v-card-text>
       <v-card-actions class="justify-space-between">
-        <router-link
-          :to="{ name: 'todo_detail', params: { todo_id: todo.id } }"
-        >
-          <v-btn text color="primary">詳細を見る</v-btn>
-        </router-link>
-        <div>
+        <div class="card-footer">
           <router-link
             :to="{ name: 'todo_edit', params: { todo_id: todo.id } }"
           >
@@ -71,10 +67,23 @@ export default {
 
 <style lang="scss" scoped>
 .todo-detail {
+    &__title {
+        margin-bottom: 40px;
+    }
+}
+.todo-detail {
   max-width: 500px;
   margin: 40px auto;
 }
 .card-button {
   margin: 4px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.card-footer {
+  margin: 0 0 0 auto;
 }
 </style>

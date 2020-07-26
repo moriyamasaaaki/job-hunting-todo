@@ -28,7 +28,10 @@
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="6">
-                <v-text-field label="時間帯" v-model="todos.time"></v-text-field>
+                <v-text-field
+                  label="時間帯"
+                  v-model="todos.time"
+                ></v-text-field>
               </v-col>
               <v-col cols="12" md="6">
                 <v-text-field
@@ -75,6 +78,13 @@
                   v-model="todos.text"
                 ></v-textarea>
               </v-col>
+              <v-col cols="12">
+                <v-textarea
+                  name="input-7-1"
+                  label="志望動機"
+                  v-model="todos.resume"
+                ></v-textarea>
+              </v-col>
             </v-row>
           </v-container>
         </v-card-text>
@@ -91,7 +101,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions } from "vuex";
 export default {
   name: "Modal",
   components: {},
@@ -103,9 +113,9 @@ export default {
 
   methods: {
     submit() {
-        this.addTodo(this.todos);
-        this.dialog = false;
-        this.todos = {};
+      this.addTodo(this.todos);
+      this.dialog = false;
+      this.todos = {};
     },
     ...mapActions(["addTodo"])
   }
