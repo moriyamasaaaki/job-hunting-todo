@@ -20,7 +20,11 @@
             <div class="text--primary">{{ todo.text }}</div>
           </v-card-text>
           <v-card-actions class="justify-space-between">
-            <v-btn text color="primary">詳細を見る</v-btn>
+            <router-link
+              :to="{ name: 'todo_detail', params: { todo_id: todo.id } }"
+            >
+              <v-btn text color="primary">詳細を見る</v-btn>
+            </router-link>
             <div>
               <router-link
                 :to="{ name: 'todo_edit', params: { todo_id: todo.id } }"
