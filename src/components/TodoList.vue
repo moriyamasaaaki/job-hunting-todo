@@ -1,6 +1,7 @@
 <template>
   <v-container class="todo-list">
     <h1>ToDoリスト</h1>
+    <p v-if="userName">ようこそ{{ userName }}さん✋</p>
     <v-row v-if="todos && todos.length > 0">
       <v-col
         cols="12"
@@ -71,7 +72,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 export default {
   created() {
     this.getTodos();
@@ -84,6 +85,9 @@ export default {
     };
   },
 
+  computed: {
+    ...mapGetters(["userName"])
+  },
   methods: {
     deleteConfirm(id, name) {
       if (confirm(`${name}のToDoを本当に削除してもよろしいですか？`)) {
