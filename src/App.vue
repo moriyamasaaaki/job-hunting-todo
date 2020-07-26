@@ -16,6 +16,7 @@
       </div>
     </v-app-bar>
     <SideNav />
+    <v-snackbar v-model="snackbar">{{ text }}</v-snackbar>
     <v-content>
       <router-view></router-view>
     </v-content>
@@ -34,7 +35,8 @@ export default {
   },
 
   data: () => ({
-    //
+    snackbar: false,
+    text: "ログアウトしました。"
   }),
 
   created() {
@@ -49,11 +51,17 @@ export default {
   },
 
   methods: {
+    login() {
+      const google_auth = new firebase.auth.GoogleAuthProvider();
+      firebase.auth().signInWithRedirect(google_auth);
+    },
+    logout() {
+      firebase.auth().signOut();
+      this.snackbar = true;
+    },
     ...mapActions([
       "toggleSideMenu",
-      "login",
       "setLoginUser",
-      "logout",
       "logoutUser",
       "fetchTodos"
     ])
