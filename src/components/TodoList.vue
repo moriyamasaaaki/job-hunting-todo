@@ -12,49 +12,14 @@
         v-for="todo in todos"
         :key="todo.id"
       >
-        <v-card class="mx-auto">
-          <v-card-text>
-            <div>{{ todo.status }}</div>
-            <p class="display-1 text--primary">{{ todo.name }}</p>
-            <p>{{ todo.time }}</p>
-            <p>{{ todo.tool }}</p>
-            <div class="text--primary">{{ todo.text }}</div>
-          </v-card-text>
-          <v-card-actions class="justify-space-between">
-            <router-link
-              :to="{ name: 'todo_detail', params: { todo_id: todo.id } }"
-            >
-              <v-btn text color="primary">詳細を見る</v-btn>
-            </router-link>
-            <div>
-              <router-link
-                :to="{ name: 'todo_edit', params: { todo_id: todo.id } }"
-              >
-                <v-btn
-                  class="card-button"
-                  color="accent"
-                  fab
-                  outlined
-                  small
-                  dark
-                >
-                  <v-icon>mdi-pencil</v-icon>
-                </v-btn>
-              </router-link>
-              <v-btn
-                class="card-button"
-                @click="deleteConfirm(todo.id, todo.name)"
-                color="error"
-                fab
-                outlined
-                small
-                dark
-              >
-                <v-icon>mdi-delete</v-icon>
-              </v-btn>
-            </div>
-          </v-card-actions>
-        </v-card>
+        <TodoItem
+          :id="todo.id"
+          :status="todo.status"
+          :name="todo.name"
+          :time="todo.time"
+          :tool="todo.tool"
+          :text="todo.text"
+        />
       </v-col>
     </v-row>
     <div class="no-text" v-else>
@@ -72,15 +37,20 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { mapGetters } from "vuex";
+import TodoItem from "@/components/TodoItem";
+
 export default {
+  components: {
+    TodoItem
+  },
   created() {
     this.getTodos();
   },
 
   data() {
     return {
-      todos: "",
+      todos: [],
       loading: false
     };
   },
@@ -89,32 +59,18 @@ export default {
     ...mapGetters(["userName"])
   },
   methods: {
-    deleteConfirm(id, name) {
-      if (confirm(`${name}のToDoを本当に削除してもよろしいですか？`)) {
-        this.deleteTodo({ id });
-      }
-    },
     getTodos() {
       this.loading = true;
       setTimeout(() => {
         this.todos = this.$store.state.todos;
         this.loading = false;
       }, 2000);
-    },
-    ...mapActions(["deleteTodo"])
+    }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.card-button {
-  margin: 4px;
-}
-
-a {
-  text-decoration: none;
-}
-
 .no-text {
   margin: 80px 0;
   text-align: center;
