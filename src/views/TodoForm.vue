@@ -89,13 +89,15 @@ export default {
     const todo = this.$store.getters.getTodoId(this.$route.params.todo_id);
     if (todo) {
       this.todo = todo;
+      this.todo.updatedAt = this.updatedAt;
     } else {
       this.$router.push("/");
     }
   },
   data() {
     return {
-      todo: {}
+      todo: {},
+      updatedAt: new Date()
     };
   },
   methods: {
