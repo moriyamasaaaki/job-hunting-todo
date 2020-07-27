@@ -97,6 +97,7 @@ export default new Vuex.Store({
       firebase
         .firestore()
         .collection(`users/${getters.uid}/todos`)
+        .orderBy("updatedAt", "desc")
         .get()
         .then(todos => {
           todos.forEach(todo => {
