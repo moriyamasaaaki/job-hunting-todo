@@ -43,16 +43,20 @@ export default {
       required: true
     },
     status: {
-      type: String
+      type: String,
+      required: true
     },
     name: {
-      type: String
+      type: String,
+      required: true
     },
     time: {
-      type: String
+      type: String,
+      required: true
     },
     tool: {
-      type: String
+      type: String,
+      required: true
     },
     text: {
       type: String

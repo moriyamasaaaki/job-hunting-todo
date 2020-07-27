@@ -25,12 +25,14 @@
                   label="企業名"
                   v-model="todos.name"
                   required
+                  :rules="[rules.required]"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="6">
                 <v-text-field
                   label="時間帯"
                   v-model="todos.time"
+                  :rules="[rules.required]"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="6">
@@ -38,6 +40,7 @@
                   label="場所"
                   v-model="todos.place"
                   required
+                  :rules="[rules.required]"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" sm="6">
@@ -53,6 +56,7 @@
                   label="面接方法"
                   v-model="todos.tool"
                   required
+                  :rules="[rules.required]"
                 ></v-select>
               </v-col>
               <v-col cols="12" sm="6">
@@ -69,6 +73,7 @@
                   ]"
                   label="選考状態"
                   v-model="todos.status"
+                  :rules="[rules.required]"
                 ></v-autocomplete>
               </v-col>
               <v-col cols="12">
@@ -93,7 +98,19 @@
           <v-btn color="blue darken-1" text @click="dialog = false"
             >キャンセル</v-btn
           >
-          <v-btn color="blue darken-1" text @click="submit">作成</v-btn>
+          <v-btn
+            color="blue darken-1"
+            text
+            :disabled="
+              !todos.name ||
+                !todos.status ||
+                !todos.time ||
+                !todos.tool ||
+                !todos.place
+            "
+            @click="submit"
+            >作成</v-btn
+          >
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -108,7 +125,10 @@ export default {
 
   data: () => ({
     dialog: false,
-    todos: {}
+    todos: {},
+    rules: {
+      required: value => !!value || "*この項目は必須です。"
+    }
   }),
 
   methods: {
