@@ -126,6 +126,8 @@ export default {
   data: () => ({
     dialog: false,
     todos: {},
+    createdAt: new Date(),
+    updatedAt: new Date(),
     rules: {
       required: value => !!value || "*この項目は必須です。"
     }
@@ -133,6 +135,8 @@ export default {
 
   methods: {
     submit() {
+      this.todos.createdAt = this.createdAt;
+      this.todos.updatedAt = this.updatedAt;
       this.addTodo(this.todos);
       this.dialog = false;
       this.todos = {};
