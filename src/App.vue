@@ -1,7 +1,9 @@
 <template>
   <v-app>
-    <Header />
-    <SideNav />
+    <div v-show="$route.path !== '/'">
+      <Header />
+      <SideNav />
+    </div>
     <v-content>
       <router-view></router-view>
     </v-content>
@@ -19,8 +21,6 @@ export default {
     Header
   },
 
-  data: () => ({}),
-
-  methods: {}
+  data: () => ({})
 };
 </script>

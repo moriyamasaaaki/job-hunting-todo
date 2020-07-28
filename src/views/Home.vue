@@ -1,18 +1,15 @@
 <template>
   <div class="home">
-    <TodoList />
-    <Modal />
+    <Login />
   </div>
 </template>
 
 <script>
-import TodoList from "@/components/TodoList";
-import Modal from "@/components/Modal";
+import Login from "@/components/Login";
 export default {
   name: "Home",
   components: {
-    TodoList,
-    Modal
+    Login
   }
 };
 </script>
