@@ -6,13 +6,14 @@
     </router-link>
     <v-spacer></v-spacer>
     <div class="my-2">
-      <div v-if="!$store.state.login_user">
+      <div v-if="!$store.state.todo.login_user">
         <v-btn @click="login">ログイン</v-btn>
       </div>
       <div v-else>
         <v-btn @click="logout">ログアウト</v-btn>
       </div>
     </div>
+      <v-snackbar v-model="snackbar">{{ text }}</v-snackbar>
   </v-app-bar>
 </template>
 

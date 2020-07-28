@@ -1,6 +1,10 @@
 <template>
   <v-sheet>
-    <v-navigation-drawer v-model="$store.state.drawer" absolute temporary>
+    <v-navigation-drawer
+      v-model="$store.state.toggleNav.drawer"
+      absolute
+      temporary
+    >
       <v-list-item>
         <v-list-item-avatar>
           <v-img v-if="photoURL" :src="photoURL"></v-img>

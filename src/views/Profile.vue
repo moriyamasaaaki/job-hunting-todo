@@ -11,7 +11,7 @@
 import { mapGetters } from "vuex";
 export default {
   created() {
-    this.todos = this.$store.state.todos;
+    this.todos = this.$store.state.todo.todos;
   },
   data() {
     return {
