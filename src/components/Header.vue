@@ -6,14 +6,11 @@
     </router-link>
     <v-spacer></v-spacer>
     <div class="my-2">
-      <div v-if="!$store.state.todo.login_user">
-        <v-btn @click="login">ログイン</v-btn>
-      </div>
-      <div v-else>
+      <div v-if="$store.state.todo.login_user">
         <v-btn @click="logout">ログアウト</v-btn>
       </div>
     </div>
-      <v-snackbar v-model="snackbar">{{ text }}</v-snackbar>
+    <v-snackbar v-model="snackbar">{{ text }}</v-snackbar>
   </v-app-bar>
 </template>
 
@@ -21,7 +18,6 @@
 import firebase from "firebase";
 import { mapActions } from "vuex";
 export default {
-
   data: () => ({
     snackbar: false,
     text: "ログアウトしました。"
@@ -44,8 +40,15 @@ export default {
       firebase.auth().signInWithRedirect(google_auth);
     },
     logout() {
-      firebase.auth().signOut();
-      this.snackbar = true;
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          this.snackbar = true;
+          setTimeout(() => {
+            this.$router.push("/");
+          }, 1200);
+        });
     },
     ...mapActions([
       "toggleSideMenu",
