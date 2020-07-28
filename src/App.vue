@@ -2,7 +2,6 @@
   <v-app>
     <Header />
     <SideNav />
-    <v-snackbar v-model="snackbar">{{ text }}</v-snackbar>
     <v-content>
       <router-view></router-view>
     </v-content>
@@ -20,10 +19,7 @@ export default {
     Header
   },
 
-  data: () => ({
-    snackbar: false,
-    text: "ログアウトしました。"
-  }),
+  data: () => ({}),
 
   methods: {}
 };

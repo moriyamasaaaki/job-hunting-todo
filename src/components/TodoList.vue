@@ -62,7 +62,7 @@ export default {
     getTodos() {
       this.loading = true;
       setTimeout(() => {
-        this.todos = this.$store.state.todos;
+        this.todos = this.$store.state.todo.todos;
         this.loading = false;
       }, 2000);
     }
