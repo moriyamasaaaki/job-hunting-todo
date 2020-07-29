@@ -5,7 +5,8 @@
       <p class="display-1 text--primary">{{ name }}</p>
       <p>{{ time }}</p>
       <p>{{ tool }}</p>
-      <div class="text--primary">{{ text }}</div>
+      <div v-if="text" class="text--primary">{{ text.slice(0, 17) }}</div>
+      <div v-else-if="!text" class="text--primary">詳細はありません。</div>
     </v-card-text>
     <v-card-actions class="justify-space-between">
       <router-link :to="{ name: 'todo_detail', params: { todo_id: id } }">

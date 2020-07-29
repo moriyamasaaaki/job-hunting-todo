@@ -7,7 +7,8 @@
         <p class="display-1 text--primary">{{ todo.name }}</p>
         <p>{{ todo.time }}</p>
         <p>面接方法：{{ todo.tool }}</p>
-        <p class="todo-detail__card-article text--primary">自由記述欄：<br />{{ todo.text }}</p>
+        <p class="todo-detail__card-article text--primary" v-if="todo.text">自由記述欄：<br />{{ todo.text }}</p>
+        <p class="todo-detail__card-article text--primary" v-else-if="!todo.text">自由記述欄：<br />詳細はありません。</p>
         <div class="todo-detail__card-article text--primary">志望動機：<br />{{ todo.resume }}</div>
       </v-card-text>
       <v-card-actions class="justify-space-between">
