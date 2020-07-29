@@ -77,8 +77,4 @@ export default {
 .card-button {
   margin: 4px;
 }
-
-a {
-  text-decoration: none;
-}
 </style>

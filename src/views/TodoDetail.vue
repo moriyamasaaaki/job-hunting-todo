@@ -6,21 +6,28 @@
         <div>{{ todo.status }}</div>
         <p class="display-1 text--primary">{{ todo.name }}</p>
         <p>{{ todo.time }}</p>
-        <p>{{ todo.tool }}</p>
-        <div class="text--primary">{{ todo.text }}</div>
-        <div class="text--primary">{{ todo.resume }}</div>
+        <p>面接方法：{{ todo.tool }}</p>
+        <p class="todo-detail__card-article text--primary">自由記述欄：<br />{{ todo.text }}</p>
+        <div class="todo-detail__card-article text--primary">志望動機：<br />{{ todo.resume }}</div>
       </v-card-text>
       <v-card-actions class="justify-space-between">
-        <div class="card-footer">
+        <div class="todo-detail__card-footer">
           <router-link
             :to="{ name: 'todo_edit', params: { todo_id: todo.id } }"
           >
-            <v-btn class="card-button" color="accent" fab outlined small dark>
+            <v-btn
+              class="todo-detail__card-button"
+              color="accent"
+              fab
+              outlined
+              small
+              dark
+            >
               <v-icon>mdi-pencil</v-icon>
             </v-btn>
           </router-link>
           <v-btn
-            class="card-button"
+            class="todo-detail__card-button"
             @click="deleteConfirm(todo.id, todo.name)"
             color="error"
             fab
@@ -67,23 +74,19 @@ export default {
 
 <style lang="scss" scoped>
 .todo-detail {
-    &__title {
-        margin-bottom: 40px;
-    }
-}
-.todo-detail {
   max-width: 500px;
   margin: 40px auto;
-}
-.card-button {
-  margin: 4px;
-}
-
-a {
-  text-decoration: none;
-}
-
-.card-footer {
-  margin: 0 0 0 auto;
+  &__title {
+    margin-bottom: 40px;
+  }
+  &__card-article {
+    line-height: 2;
+  }
+  &__card-button {
+    margin: 4px;
+  }
+  &__card-footer {
+    margin: 0 0 0 auto;
+  }
 }
 </style>

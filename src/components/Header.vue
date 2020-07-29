@@ -1,8 +1,8 @@
 <template>
-  <v-app-bar app color="primary" dark>
+  <v-app-bar class="header" app color="primary" dark>
     <v-app-bar-nav-icon @click.stop="toggleSideMenu"></v-app-bar-nav-icon>
     <router-link to="/">
-      <span>就活ToDo</span>
+      <span class="header__title">就活ToDo</span>
     </router-link>
     <v-spacer></v-spacer>
     <div class="my-2">
@@ -61,10 +61,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-a {
-  text-decoration: none;
-}
-span {
-  color: #fff;
+.header {
+  &__title {
+    color: #fff;
+  }
 }
 </style>
