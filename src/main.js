@@ -6,6 +6,8 @@ import store from "./store";
 import vuetify from "./plugins/vuetify";
 import firebase from "firebase";
 
+require("@/assets/sass/main.scss");
+
 Vue.config.productionTip = false;
 
 const firebaseConfig = {
