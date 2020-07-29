@@ -1,9 +1,11 @@
 <template>
   <div class="profile">
-    <h1>プロフィールページ</h1>
-    <h2>{{ userName }}</h2>
-    <p>投稿数：{{ todos.length }}</p>
-    <img :src="photoURL" alt="" />
+    <h1 class="profile__title">プロフィールページ</h1>
+    <div class="profile__user-info">
+      <h2 class="profile__userName">{{ userName }}</h2>
+      <p class="profile__todo-length">投稿数：{{ todos.length }}</p>
+      <img :src="photoURL" alt />
+    </div>
   </div>
 </template>
 
@@ -30,20 +32,26 @@ export default {
   max-width: 500px;
   margin: 0 auto;
   padding: 0 16px;
-  h1 {
+
+  &__title {
     font-size: 24px;
     text-align: center;
     margin: 40px 0;
   }
-  h2 {
+  &__userName {
     font-size: 20px;
   }
-  p {
+  &__todo-length {
     margin-bottom: 40px;
   }
   img {
-    width: 100%;
+    width: 80%;
+    margin: 0 auto;
+    display: block;
     border-radius: 50%;
+    @include tab {
+      width: 100%;
+    }
   }
 }
 </style>
