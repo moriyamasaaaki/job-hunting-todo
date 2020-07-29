@@ -42,7 +42,7 @@ export default {
   data() {
     return {
       items: [
-        { title: "ToDoリスト", icon: "mdi-home", link: "/" },
+        { title: "ToDoリスト", icon: "mdi-home", link: "/todos" },
         { title: "プロフィール", icon: "mdi-account", link: "/profile" }
       ]
     };

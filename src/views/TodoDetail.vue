@@ -52,7 +52,7 @@ export default {
     if (todo) {
       this.todo = todo;
     } else {
-      this.$router.push("/");
+      this.$router.push("/todos");
     }
   },
   data() {

@@ -1,7 +1,7 @@
 <template>
   <v-app-bar class="header" app color="primary" dark>
     <v-app-bar-nav-icon @click.stop="toggleSideMenu"></v-app-bar-nav-icon>
-    <router-link to="/">
+    <router-link to="/todos">
       <span class="header__title">就活ToDo</span>
     </router-link>
     <v-spacer></v-spacer>
