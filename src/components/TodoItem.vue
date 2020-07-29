@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mx-auto">
+  <v-card class="todo-item mx-auto">
     <v-card-text>
       <div>{{ status }}</div>
       <p class="display-1 text--primary">{{ name }}</p>
@@ -13,12 +13,19 @@
       </router-link>
       <div>
         <router-link :to="{ name: 'todo_edit', params: { todo_id: id } }">
-          <v-btn class="card-button" color="accent" fab outlined small dark>
+          <v-btn
+            class="todo-item__button"
+            color="accent"
+            fab
+            outlined
+            small
+            dark
+          >
             <v-icon>mdi-pencil</v-icon>
           </v-btn>
         </router-link>
         <v-btn
-          class="card-button"
+          class="todo-item__button"
           @click="deleteConfirm(id, name)"
           color="error"
           fab
@@ -74,7 +81,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.card-button {
-  margin: 4px;
+.todo-item {
+  cursor: pointer;
+  @include pc {
+    &:hover {
+      background-color: #e4f1fa;
+    }
+  }
+  &__button {
+    margin: 4px;
+  }
 }
 </style>

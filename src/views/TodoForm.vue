@@ -91,7 +91,7 @@ export default {
       this.todo = todo;
       this.todo.updatedAt = this.updatedAt;
     } else {
-      this.$router.push("/");
+      this.$router.push("/todos");
     }
   },
   data() {
@@ -105,10 +105,10 @@ export default {
       if (this.$route.params.todo_id) {
         this.updateTodo({ id: this.$route.params.todo_id, todo: this.todo });
       }
-      this.$router.push("/");
+      this.$router.push("/todos");
     },
     back() {
-      this.$router.push("/");
+      this.$router.push("/todos");
     },
     ...mapActions(["updateTodo"])
   }
