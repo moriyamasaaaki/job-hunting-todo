@@ -7,37 +7,60 @@
         <p class="display-1 text--primary">{{ todo.name }}</p>
         <p>{{ todo.time }}</p>
         <p>面接方法：{{ todo.tool }}</p>
-        <p class="todo-detail__card-article text--primary" v-if="todo.text">自由記述欄：<br />{{ todo.text }}</p>
-        <p class="todo-detail__card-article text--primary" v-else-if="!todo.text">自由記述欄：<br />詳細はありません。</p>
-        <div class="todo-detail__card-article text--primary">志望動機：<br />{{ todo.resume }}</div>
+        <p class="todo-detail__card-article text--primary" v-if="todo.text">
+          自由記述欄：
+          <br />
+          {{ todo.text }}
+        </p>
+        <p class="todo-detail__card-article text--primary" v-else-if="!todo.text">
+          自由記述欄：
+          <br />詳細はありません。
+        </p>
+        <div class="todo-detail__card-article text--primary">
+          志望動機：
+          <br />
+          {{ todo.resume }}
+        </div>
       </v-card-text>
       <v-card-actions class="justify-space-between">
         <div class="todo-detail__card-footer">
-          <router-link
-            :to="{ name: 'todo_edit', params: { todo_id: todo.id } }"
-          >
-            <v-btn
-              class="todo-detail__card-button"
-              color="accent"
-              fab
-              outlined
-              small
-              dark
-            >
-              <v-icon>mdi-pencil</v-icon>
-            </v-btn>
+          <router-link :to="{ name: 'todo_edit', params: { todo_id: id } }">
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn
+                  class="todo-item__button"
+                  color="accent"
+                  fab
+                  outlined
+                  small
+                  dark
+                  v-bind="attrs"
+                  v-on="on"
+                >
+                  <v-icon>mdi-pencil</v-icon>
+                </v-btn>
+              </template>
+              <span>ToDoを編集する</span>
+            </v-tooltip>
           </router-link>
-          <v-btn
-            class="todo-detail__card-button"
-            @click="deleteConfirm(todo.id, todo.name)"
-            color="error"
-            fab
-            outlined
-            small
-            dark
-          >
-            <v-icon>mdi-delete</v-icon>
-          </v-btn>
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                class="todo-detail__card-button"
+                @click="deleteConfirm(todo.id, todo.name)"
+                color="error"
+                fab
+                outlined
+                small
+                dark
+                v-bind="attrs"
+                v-on="on"
+              >
+                <v-icon>mdi-delete</v-icon>
+              </v-btn>
+            </template>
+            <span>ToDoを削除する</span>
+          </v-tooltip>
         </div>
       </v-card-actions>
     </v-card>
@@ -84,7 +107,7 @@ export default {
     line-height: 2;
   }
   &__card-button {
-    margin: 4px;
+    margin: 8px;
   }
   &__card-footer {
     margin: 0 0 0 auto;
