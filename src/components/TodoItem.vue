@@ -14,28 +14,42 @@
       </router-link>
       <div>
         <router-link :to="{ name: 'todo_edit', params: { todo_id: id } }">
-          <v-btn
-            class="todo-item__button"
-            color="accent"
-            fab
-            outlined
-            small
-            dark
-          >
-            <v-icon>mdi-pencil</v-icon>
-          </v-btn>
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                class="todo-item__button"
+                color="accent"
+                fab
+                outlined
+                small
+                dark
+                v-bind="attrs"
+                v-on="on"
+              >
+                <v-icon>mdi-pencil</v-icon>
+              </v-btn>
+            </template>
+            <span>ToDoを編集する</span>
+          </v-tooltip>
         </router-link>
-        <v-btn
-          class="todo-item__button"
-          @click="deleteConfirm(id, name)"
-          color="error"
-          fab
-          outlined
-          small
-          dark
-        >
-          <v-icon>mdi-delete</v-icon>
-        </v-btn>
+        <v-tooltip bottom>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+              class="todo-item__button"
+              @click="deleteConfirm(id, name)"
+              color="error"
+              fab
+              outlined
+              small
+              dark
+              v-bind="attrs"
+              v-on="on"
+            >
+              <v-icon>mdi-delete</v-icon>
+            </v-btn>
+          </template>
+          <span>ToDoを削除する</span>
+        </v-tooltip>
       </div>
     </v-card-actions>
   </v-card>
