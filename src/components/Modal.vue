@@ -28,6 +28,37 @@
                   :rules="[rules.required]"
                 ></v-text-field>
               </v-col>
+
+              <v-col cols="12" sm="4">
+                <v-select
+                  :items="months"
+                  label="月"
+                  v-model="todos.months"
+                  required
+                  :rules="[rules.required]"
+                ></v-select>
+              </v-col>
+
+              <v-col cols="12" sm="4">
+                <v-select
+                  :items="days"
+                  label="日にち"
+                  v-model="todos.days"
+                  required
+                  :rules="[rules.required]"
+                ></v-select>
+              </v-col>
+
+              <v-col cols="12" sm="4">
+                <v-select
+                  :items="week"
+                  label="曜日"
+                  v-model="todos.week"
+                  required
+                  :rules="[rules.required]"
+                ></v-select>
+              </v-col>
+
               <v-col cols="12" md="6">
                 <v-text-field
                   label="時間帯"
@@ -128,6 +159,9 @@ export default {
     todos: {},
     createdAt: new Date(),
     updatedAt: new Date(),
+    months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    days: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31],
+    week: ["月", "火", "水", "木", "金", "土", "日"],
     rules: {
       required: value => !!value || "*この項目は必須です。"
     }

@@ -1,8 +1,18 @@
 <template>
   <v-container class="todo-list">
-    <h1 class="todo-list__title">{{ userName }}さんの就活ToDo</h1>
+    <h1 v-if="todos && todos.length > 0" class="todo-list__title">
+      {{ userName }}さんの就活ToDo
+    </h1>
     <v-row v-if="todos && todos.length > 0">
-      <v-col cols="12" sm="6" md="6" lg="3" xl="3" v-for="todo in todos" :key="todo.id">
+      <v-col
+        cols="12"
+        sm="6"
+        md="6"
+        lg="3"
+        xl="3"
+        v-for="todo in todos"
+        :key="todo.id"
+      >
         <TodoItem
           :id="todo.id"
           :status="todo.status"
@@ -10,14 +20,22 @@
           :time="todo.time"
           :tool="todo.tool"
           :text="todo.text"
+          :months="todo.months"
+          :days="todo.days"
+          :week="todo.week"
         />
       </v-col>
     </v-row>
-    <div class="todo-list__default-text" v-else>
+    <div class="todo-list__default-text" v-else-if="!todos && !loading">
       <p>ToDoを作成してください。</p>
     </div>
     <div class="text-center">
-      <v-progress-circular :size="50" v-show="loading" color="primary" indeterminate></v-progress-circular>
+      <v-progress-circular
+        :size="50"
+        v-show="loading"
+        color="primary"
+        indeterminate
+      ></v-progress-circular>
     </div>
   </v-container>
 </template>
@@ -50,7 +68,7 @@ export default {
       setTimeout(() => {
         this.todos = this.$store.state.todo.todos;
         this.loading = false;
-      }, 2000);
+      }, 2500);
     }
   }
 };
