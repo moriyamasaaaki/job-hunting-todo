@@ -15,6 +15,7 @@ const mutations = {
   addTodo(state, { id, todo }) {
     todo.id = id;
     state.todos.push(todo);
+    return state.todos;
   },
   updateTodo(state, { id, todo }) {
     const index = state.todos.findIndex(todo => {
@@ -24,7 +25,7 @@ const mutations = {
   },
   deleteTodo(state, { id }) {
     const index = state.todos.findIndex(todo => {
-      todo.id === id;
+      return todo.id === id;
     });
     state.todos.splice(index, 1);
   }
