@@ -5,6 +5,7 @@
       <v-card-text>
         <div>{{ todo.status }}</div>
         <p class="display-1 text--primary">{{ todo.name }}</p>
+        <p>{{ todo.months }}月{{ todo.days }}日{{ todo.week }}曜日</p>
         <p>{{ todo.time }}</p>
         <p>面接方法：{{ todo.tool }}</p>
         <p class="todo-detail__card-article text--primary" v-if="todo.text">
@@ -98,7 +99,7 @@ export default {
 
 <style lang="scss" scoped>
 .todo-detail {
-  max-width: 500px;
+  max-width: 550px;
   margin: 40px auto;
   &__title {
     margin-bottom: 40px;

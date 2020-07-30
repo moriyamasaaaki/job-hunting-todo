@@ -3,9 +3,12 @@
     <v-card-text>
       <div>{{ status }}</div>
       <p class="display-1 text--primary">{{ name }}</p>
+      <p>{{ months }}月{{ days }}日{{ week }}曜日</p>
       <p>{{ time }}</p>
       <p>{{ tool }}</p>
-      <div v-if="text" class="text--primary">{{ text.slice(0, 17) }}</div>
+      <div v-if="text" class="text--primary">
+        {{ text.slice(0, 15) }}<span v-if="text.length > 15">...</span>
+      </div>
       <div v-else-if="!text" class="text--primary">詳細はありません。</div>
     </v-card-text>
     <v-card-actions class="justify-space-between">
@@ -81,6 +84,15 @@ export default {
       required: true
     },
     text: {
+      type: String
+    },
+    months: {
+      type: Number
+    },
+    days: {
+      type: Number
+    },
+    week: {
       type: String
     }
   },
