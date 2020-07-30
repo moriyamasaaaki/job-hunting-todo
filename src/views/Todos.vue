@@ -1,18 +1,32 @@
 <template>
   <div class="todos">
     <TodoList />
-    <Modal />
+
+    <router-link to="/todos/create">
+      <v-btn class="todos__btn mx-2" fab dark color="indigo">
+        <v-icon dark>mdi-plus</v-icon>
+      </v-btn>
+    </router-link>
   </div>
 </template>
 
 <script>
 import TodoList from "@/components/TodoList";
-import Modal from "@/components/Modal";
 export default {
   name: "Todos",
   components: {
-    TodoList,
-    Modal
+    TodoList
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.todos {
+  position: relative;
+    &__btn {
+    position: fixed;
+    right: 3%;
+    bottom: 3%;
+  }
+}
+</style>
