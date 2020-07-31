@@ -1,5 +1,5 @@
-# アプリ名
-就活ToDo
+# 就活ToDo
+就活生がより良い就活をするためのToDoリスト
 [![Image from Gyazo](https://i.gyazo.com/0504bc83a43c74215583ecd154f4cd37.png)](https://gyazo.com/0504bc83a43c74215583ecd154f4cd37)
 
 ## 概要
