@@ -25,7 +25,7 @@
       </v-card-text>
       <v-card-actions class="justify-space-between">
         <div class="todo-detail__card-footer">
-          <router-link :to="{ name: 'todo_edit', params: { todo_id: id } }">
+          <router-link :to="{ name: 'todo_edit', params: { todo_id: todo.id } }">
             <v-tooltip bottom>
               <template v-slot:activator="{ on, attrs }">
                 <v-btn
@@ -106,6 +106,8 @@ export default {
   }
   &__card-article {
     line-height: 2;
+    white-space: pre-wrap;
+    word-wrap: break-word;
   }
   &__card-button {
     margin: 8px;
