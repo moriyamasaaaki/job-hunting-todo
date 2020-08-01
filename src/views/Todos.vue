@@ -23,7 +23,7 @@ export default {
 <style lang="scss" scoped>
 .todos {
   position: relative;
-    &__btn {
+  &__btn {
     position: fixed;
     right: 3%;
     bottom: 3%;
