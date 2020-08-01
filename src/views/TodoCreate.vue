@@ -5,64 +5,68 @@
         <span class="headline">就活ToDo作成</span>
       </v-card-title>
       <v-card-text>
-        <v-container>
-          <v-row>
+        <v-container class="todo-create__form">
+          <v-row class="todo-create__form-left">
             <v-col cols="12">
-              <v-text-field label="企業名" v-model="todos.name" required></v-text-field>
+              <v-text-field label="企業名" v-model="todos.name" required outlined></v-text-field>
             </v-col>
-            <v-col cols="12" sm="4">
-              <v-select :items="months" label="月" v-model="todos.months" required></v-select>
-            </v-col>
-
-            <v-col cols="12" sm="4">
-              <v-select :items="days" label="日にち" v-model="todos.days" required></v-select>
-            </v-col>
-
-            <v-col cols="12" sm="4">
-              <v-select :items="week" label="曜日" v-model="todos.week" required></v-select>
+            <v-col cols="12">
+              <v-text-field label="場所" v-model="todos.place" required outlined></v-text-field>
             </v-col>
             <v-col cols="12" md="6">
-              <v-text-field label="時間帯" v-model="todos.time"></v-text-field>
+              <v-select :items="months" label="月" v-model="todos.months" required outlined></v-select>
+            </v-col>
+
+            <v-col cols="12" md="6">
+              <v-select :items="days" label="日にち" v-model="todos.days" required outlined></v-select>
+            </v-col>
+
+            <v-col cols="12" md="6">
+              <v-select :items="week" label="曜日" v-model="todos.week" required outlined></v-select>
             </v-col>
             <v-col cols="12" md="6">
-              <v-text-field label="場所" v-model="todos.place" required></v-text-field>
+              <v-text-field label="時間帯" v-model="todos.time" outlined></v-text-field>
             </v-col>
-            <v-col cols="12" sm="6">
+            <v-col cols="12" md="6">
               <v-select
                 :items="[
-                  '対面',
-                  'Zoom',
-                  'Skype',
-                  'Googleハングアウト',
-                  'Whereby',
-                  'Microsoft Teams'
-                ]"
+                    '対面',
+                    'Zoom',
+                    'Skype',
+                    'Googleハングアウト',
+                    'Whereby',
+                    'Microsoft Teams'
+                  ]"
                 label="面接方法"
                 v-model="todos.tool"
                 required
+                outlined
               ></v-select>
             </v-col>
-            <v-col cols="12" sm="6">
+            <v-col cols="12" md="6">
               <v-autocomplete
                 :items="[
-                  '説明会',
-                  '一次選考',
-                  '二次選考',
-                  '三次選考',
-                  '四次選考',
-                  '最終面接',
-                  '面談',
-                  'インターン'
-                ]"
+                    '説明会',
+                    '一次選考',
+                    '二次選考',
+                    '三次選考',
+                    '四次選考',
+                    '最終面接',
+                    '面談',
+                    'インターン'
+                  ]"
                 label="選考状態"
                 v-model="todos.status"
+                outlined
               ></v-autocomplete>
             </v-col>
+          </v-row>
+          <v-row class="todo-create__form-right">
             <v-col cols="12">
-              <v-textarea name="input-7-1" label="自由記述覧" v-model="todos.text"></v-textarea>
+              <v-textarea name="input-7-1" label="自由記述覧" v-model="todos.text" outlined rows="7"></v-textarea>
             </v-col>
             <v-col cols="12">
-              <v-textarea name="input-7-1" label="志望動機" v-model="todos.resume"></v-textarea>
+              <v-textarea name="input-7-1" label="志望動機" v-model="todos.resume" outlined rows="7"></v-textarea>
             </v-col>
           </v-row>
         </v-container>
@@ -155,7 +159,27 @@ export default {
 
 <style lang="scss" scoped>
 .todo-create {
-  max-width: 600px;
+  max-width: 1000px;
   margin: 40px auto;
+  &__form {
+    @include pc {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      width: 100%;
+    }
+  }
+  &__form-left {
+    @include pc {
+      width: 50%;
+      padding: 8px;
+    }
+  }
+  &__form-right {
+    @include pc {
+      width: 50%;
+      padding: 8px;
+    }
+  }
 }
 </style>
