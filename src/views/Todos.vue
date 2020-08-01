@@ -2,7 +2,7 @@
   <div class="todos">
     <TodoList />
 
-    <router-link to="/todos/create">
+    <router-link :to="{ name: 'todo_edit' }">
       <v-btn class="todos__btn mx-2" fab dark color="indigo">
         <v-icon dark>mdi-plus</v-icon>
       </v-btn>
