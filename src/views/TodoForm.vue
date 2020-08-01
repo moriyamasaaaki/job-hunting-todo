@@ -8,24 +8,56 @@
         <v-container class="todo-edit__form">
           <v-row class="todo-edit__form-left">
             <v-col cols="12">
-              <v-text-field label="企業名" v-model="todo.name" required outlined></v-text-field>
+              <v-text-field
+                label="企業名"
+                v-model="todo.name"
+                required
+                outlined
+              ></v-text-field>
             </v-col>
             <v-col cols="12">
-              <v-text-field label="場所" v-model="todo.place" required outlined></v-text-field>
+              <v-text-field
+                label="場所"
+                v-model="todo.place"
+                required
+                outlined
+              ></v-text-field>
             </v-col>
             <v-col cols="12" md="6">
-              <v-select :items="months" label="月" v-model="todo.months" required outlined></v-select>
+              <v-select
+                :items="months"
+                label="月"
+                v-model="todo.months"
+                required
+                outlined
+              ></v-select>
             </v-col>
 
             <v-col cols="12" md="6">
-              <v-select :items="days" label="日にち" v-model="todo.days" required outlined></v-select>
+              <v-select
+                :items="days"
+                label="日にち"
+                v-model="todo.days"
+                required
+                outlined
+              ></v-select>
             </v-col>
 
             <v-col cols="12" md="6">
-              <v-select :items="week" label="曜日" v-model="todo.week" required outlined></v-select>
+              <v-select
+                :items="week"
+                label="曜日"
+                v-model="todo.week"
+                required
+                outlined
+              ></v-select>
             </v-col>
             <v-col cols="12" md="6">
-              <v-text-field label="時間帯" v-model="todo.time" outlined></v-text-field>
+              <v-text-field
+                label="時間帯"
+                v-model="todo.time"
+                outlined
+              ></v-text-field>
             </v-col>
             <v-col cols="12" md="6">
               <v-select
@@ -63,10 +95,22 @@
           </v-row>
           <v-row class="todo-edit__form-right">
             <v-col cols="12">
-              <v-textarea name="input-7-1" label="自由記述覧" v-model="todo.text" outlined rows="7"></v-textarea>
+              <v-textarea
+                name="input-7-1"
+                label="自由記述覧"
+                v-model="todo.text"
+                outlined
+                rows="7"
+              ></v-textarea>
             </v-col>
             <v-col cols="12">
-              <v-textarea name="input-7-1" label="志望動機" v-model="todo.resume" outlined rows="7"></v-textarea>
+              <v-textarea
+                name="input-7-1"
+                label="志望動機"
+                v-model="todo.resume"
+                outlined
+                rows="7"
+              ></v-textarea>
             </v-col>
           </v-row>
         </v-container>

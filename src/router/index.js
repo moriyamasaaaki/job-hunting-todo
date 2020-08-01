@@ -13,27 +13,27 @@ const routes = [
   {
     path: "/todos",
     name: "Todos",
-    component: () => import("../views/Todos.vue"),
+    component: () => import("../views/Todos.vue")
   },
   {
     path: "/about",
     name: "About",
-    component: () => import("../views/About.vue"),
+    component: () => import("../views/About.vue")
   },
   {
     path: "/profile",
     name: "Profile",
-    component: () => import("../views/Profile.vue"),
+    component: () => import("../views/Profile.vue")
   },
   {
     path: "/todos/:todo_id?/form",
     name: "todo_edit",
-    component: () => import("../views/TodoForm.vue"),
+    component: () => import("../views/TodoForm.vue")
   },
   {
     path: "/todos/:todo_id?",
     name: "todo_detail",
-    component: () => import("../views/TodoDetail.vue"),
+    component: () => import("../views/TodoDetail.vue")
   }
 ];
 

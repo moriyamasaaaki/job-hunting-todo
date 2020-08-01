@@ -13,7 +13,10 @@
           <br />
           {{ todo.text }}
         </p>
-        <p class="todo-detail__card-article text--primary" v-else-if="!todo.text">
+        <p
+          class="todo-detail__card-article text--primary"
+          v-else-if="!todo.text"
+        >
           自由記述欄：
           <br />詳細はありません。
         </p>
@@ -25,7 +28,9 @@
       </v-card-text>
       <v-card-actions class="justify-space-between">
         <div class="todo-detail__card-footer">
-          <router-link :to="{ name: 'todo_edit', params: { todo_id: todo.id } }">
+          <router-link
+            :to="{ name: 'todo_edit', params: { todo_id: todo.id } }"
+          >
             <v-tooltip bottom>
               <template v-slot:activator="{ on, attrs }">
                 <v-btn
