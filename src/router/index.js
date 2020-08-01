@@ -26,12 +26,7 @@ const routes = [
     component: () => import("../views/Profile.vue"),
   },
   {
-    path: "/todos/create",
-    name: "todo_create",
-    component: () => import("../views/TodoCreate.vue"),
-  },
-  {
-    path: "/todos/:todo_id?/edit",
+    path: "/todos/:todo_id?/form",
     name: "todo_edit",
     component: () => import("../views/TodoForm.vue"),
   },
@@ -39,7 +34,7 @@ const routes = [
     path: "/todos/:todo_id?",
     name: "todo_detail",
     component: () => import("../views/TodoDetail.vue"),
-  },
+  }
 ];
 
 const router = new VueRouter({
