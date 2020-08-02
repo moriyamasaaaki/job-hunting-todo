@@ -3,9 +3,9 @@
     <v-card-text>
       <div>{{ status }}</div>
       <p class="display-1 text--primary">{{ name }}</p>
-      <p>{{ months }}月{{ days }}日{{ week }}曜日</p>
-      <p>{{ time }}</p>
-      <p>{{ tool }}</p>
+      <p>日付：{{ months }}月{{ days }}日{{ week }}曜日</p>
+      <p>時間帯：{{ time }}</p>
+      <p>方法：{{ tool }}</p>
       <div v-if="text" class="text--primary">
         {{ text.slice(0, 15) }}<span v-if="text.length > 15">...</span>
       </div>

@@ -1,8 +1,13 @@
 <template>
   <v-container class="todo-list">
-    <h1 v-if="todos && todos.length > 0" class="todo-list__title">
-      {{ userName }}さんの就活ToDo
-    </h1>
+    <div v-if="todos && todos.length > 0">
+      <h1 class="todo-list__title">{{ userName }}さんの就活ToDo</h1>
+      <p class="todo-list__length">
+        現在
+        <span class="todo-list__length-number">{{ todos.length }}</span>
+        件あります
+      </p>
+    </div>
     <v-row v-if="todos && todos.length > 0">
       <v-col
         cols="12"
@@ -92,6 +97,11 @@ export default {
       font-size: 24px;
       font-weight: 700;
     }
+  }
+  &__length-number {
+    font-weight: 700;
+    color: orangered;
+    font-size: 20px;
   }
 }
 </style>

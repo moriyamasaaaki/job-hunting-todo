@@ -1,6 +1,6 @@
 <template>
   <div class="todo-detail">
-    <h1 class="todo-detail__title">{{ todo.name }}のToDo詳細</h1>
+    <h1 class="todo-detail__title">{{ todo.name }}の就活詳細</h1>
     <v-card class="mx-auto">
       <v-card-text>
         <div>{{ todo.status }}</div>
@@ -20,9 +20,17 @@
           自由記述欄：
           <br />詳細はありません。
         </p>
-        <div class="todo-detail__card-article text--primary">
+        <div class="todo-detail__card-article text--primary" v-if="todo.resume">
           志望動機：
           <br />
+          {{ todo.resume }}
+        </div>
+        <div
+          class="todo-detail__card-article text--primary"
+          v-else-if="!todo.resume"
+        >
+          志望動機：
+          <br />志望動機はありません。
           {{ todo.resume }}
         </div>
       </v-card-text>
@@ -95,6 +103,7 @@ export default {
     deleteConfirm(id, name) {
       if (confirm(`${name}のToDoを本当に削除してもよろしいですか？`)) {
         this.deleteTodo({ id });
+        this.$router.push("/todos");
       }
     },
     ...mapActions(["deleteTodo"])
@@ -104,6 +113,7 @@ export default {
 
 <style lang="scss" scoped>
 .todo-detail {
+  padding: 16px;
   max-width: 550px;
   margin: 40px auto;
   &__title {
