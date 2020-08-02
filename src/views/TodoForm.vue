@@ -9,54 +9,60 @@
           <v-row class="todo-edit__form-left">
             <v-col cols="12">
               <v-text-field
-                label="企業名"
+                label="企業名(*必須)"
                 v-model="todo.name"
                 required
                 outlined
+                :rules="[rules.required]"
               ></v-text-field>
             </v-col>
             <v-col cols="12">
               <v-text-field
-                label="場所"
+                label="場所(*必須)"
                 v-model="todo.place"
                 required
                 outlined
+                :rules="[rules.required]"
               ></v-text-field>
             </v-col>
             <v-col cols="12" md="6">
               <v-select
                 :items="months"
-                label="月"
+                label="月(*必須)"
                 v-model="todo.months"
                 required
                 outlined
+                :rules="[rules.required]"
               ></v-select>
             </v-col>
 
             <v-col cols="12" md="6">
               <v-select
                 :items="days"
-                label="日にち"
+                label="日にち(*必須)"
                 v-model="todo.days"
                 required
                 outlined
+                :rules="[rules.required]"
               ></v-select>
             </v-col>
 
             <v-col cols="12" md="6">
               <v-select
                 :items="week"
-                label="曜日"
+                label="曜日(*必須)"
                 v-model="todo.week"
                 required
                 outlined
+                :rules="[rules.required]"
               ></v-select>
             </v-col>
             <v-col cols="12" md="6">
               <v-text-field
-                label="時間帯"
+                label="時間帯(*必須)"
                 v-model="todo.time"
                 outlined
+                :rules="[rules.required]"
               ></v-text-field>
             </v-col>
             <v-col cols="12" md="6">
@@ -69,10 +75,11 @@
                   'Whereby',
                   'Microsoft Teams'
                 ]"
-                label="面接方法"
+                label="面接方法(*必須)"
                 v-model="todo.tool"
                 required
                 outlined
+                :rules="[rules.required]"
               ></v-select>
             </v-col>
             <v-col cols="12" md="6">
@@ -87,9 +94,10 @@
                   '面談',
                   'インターン'
                 ]"
-                label="選考状態"
+                label="選考状態(*必須)"
                 v-model="todo.status"
                 outlined
+                :rules="[rules.required]"
               ></v-autocomplete>
             </v-col>
           </v-row>
@@ -97,7 +105,7 @@
             <v-col cols="12">
               <v-textarea
                 name="input-7-1"
-                label="自由記述覧"
+                label="自由記述覧(任意)"
                 v-model="todo.text"
                 outlined
                 rows="7"
@@ -106,7 +114,8 @@
             <v-col cols="12">
               <v-textarea
                 name="input-7-1"
-                label="志望動機"
+                label="志望動機(任意)"
+                counter
                 v-model="todo.resume"
                 outlined
                 rows="7"
@@ -118,7 +127,22 @@
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn color="blue darken-1" text @click="back">キャンセル</v-btn>
-        <v-btn color="blue darken-1" text @click="submit">作成</v-btn>
+        <v-btn
+          color="blue darken-1"
+          text
+          :disabled="
+            !todo.name ||
+              !todo.status ||
+              !todo.time ||
+              !todo.tool ||
+              !todo.place ||
+              !todo.months ||
+              !todo.days ||
+              !todo.week
+          "
+          @click="submit"
+          >作成</v-btn
+        >
       </v-card-actions>
     </v-card>
   </div>
