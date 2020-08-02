@@ -1,5 +1,6 @@
 # 就活ToDo
 就活生がより良い就活をするためのToDoリスト
+URL: https://job-hunting-todo.herokuapp.com/
 [![Image from Gyazo](https://i.gyazo.com/0504bc83a43c74215583ecd154f4cd37.png)](https://gyazo.com/0504bc83a43c74215583ecd154f4cd37)
 
 ## 概要
@@ -24,3 +25,10 @@
  - Vue.js
  - Firebase
  - Heroku
+
+##### バグ・今後の追加項目
+バグ
+- ToDoを作成時にページを再読み込みしないとToDoがViewに反映されないです。
+
+追加項目
+- このサービスの使い方がわかるようなページがあると良いので今後追加予定
