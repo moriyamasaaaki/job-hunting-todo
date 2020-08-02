@@ -3,6 +3,7 @@
 URL: https://job-hunting-todo.herokuapp.com/
 [![Image from Gyazo](https://i.gyazo.com/0504bc83a43c74215583ecd154f4cd37.png)](https://gyazo.com/0504bc83a43c74215583ecd154f4cd37)
 
+
 ## 概要
 就職活動では日程の管理がうまくできなく、同じ時間帯に説明会や面接が入ってしまったり、忘れてしまったりすることがある人向けに就職活動をしっかりと管理できるようなToDoリストを作成しました。
 
@@ -32,3 +33,8 @@ URL: https://job-hunting-todo.herokuapp.com/
 
 追加項目
 - このサービスの使い方がわかるようなページがあると良いので今後追加予定
+
+--- 
+[![Image from Gyazo](https://i.gyazo.com/9704334faee1dec686d14e2ae40effbd.png)](https://gyazo.com/9704334faee1dec686d14e2ae40effbd)
+
+[![Image from Gyazo](https://i.gyazo.com/2bdb56d38b4eea2e49f71e8c787f9e9e.png)](https://gyazo.com/2bdb56d38b4eea2e49f71e8c787f9e9e)
