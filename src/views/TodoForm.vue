@@ -141,7 +141,7 @@
               !todo.week
           "
           @click="submit"
-          >作成</v-btn
+          >{{ btnText }}</v-btn
         >
       </v-card-actions>
     </v-card>
@@ -155,15 +155,18 @@ export default {
     const todo = this.$store.getters.getTodoId(this.$route.params.todo_id);
     if (todo) {
       this.title = "編集";
+      this.btnText = "更新";
       this.todo = todo;
       this.todo.updatedAt = this.updatedAt;
     } else {
       this.title = "作成";
+      this.btnText = "作成";
     }
   },
   data() {
     return {
       title: "",
+      btnText: "",
       todo: {},
       createdAt: new Date(),
       updatedAt: new Date(),

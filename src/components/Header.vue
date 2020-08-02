@@ -7,7 +7,9 @@
     <v-spacer></v-spacer>
     <div class="my-2">
       <div v-if="$store.state.todo.login_user">
-        <v-btn @click="logout">ログアウト</v-btn>
+        <v-btn class="header__auth-btn" color="white" @click="logout"
+          >ログアウト</v-btn
+        >
       </div>
     </div>
     <v-snackbar v-model="snackbar">{{ text }}</v-snackbar>
@@ -64,6 +66,9 @@ export default {
 .header {
   &__title {
     color: #fff;
+  }
+  button {
+    color: #000;
   }
 }
 </style>
