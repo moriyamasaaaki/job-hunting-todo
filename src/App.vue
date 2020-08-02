@@ -4,7 +4,7 @@
       <Header />
       <SideNav />
     </div>
-    <v-content class="app">
+    <v-content>
       <router-view></router-view>
     </v-content>
   </v-app>
@@ -24,6 +24,3 @@ export default {
   data: () => ({})
 };
 </script>
-
-<style lang="scss">
-</style>
