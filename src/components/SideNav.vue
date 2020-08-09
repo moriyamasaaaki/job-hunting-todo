@@ -43,7 +43,8 @@ export default {
     return {
       items: [
         { title: "ToDoリスト", icon: "mdi-home", link: "/todos" },
-        { title: "プロフィール", icon: "mdi-account", link: "/profile" }
+        { title: "プロフィール", icon: "mdi-account", link: "/profile" },
+        { title: "就活サイト一覧", icon: "mdi-web", link: "/site/list" }
       ]
     };
   },
