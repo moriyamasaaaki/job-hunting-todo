@@ -26,6 +26,7 @@
           :tool="todo.tool"
           :text="todo.text"
           :months="todo.months"
+          :url="todo.url"
           :days="todo.days"
           :week="todo.week"
         />
