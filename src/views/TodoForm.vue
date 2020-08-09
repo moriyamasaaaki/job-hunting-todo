@@ -100,6 +100,14 @@
                 :rules="[rules.required]"
               ></v-autocomplete>
             </v-col>
+            <v-col cols="12">
+              <v-text-field
+                label="サイトURL(任意)"
+                v-model="todo.url"
+                required
+                outlined
+              ></v-text-field>
+            </v-col>
           </v-row>
           <v-row class="todo-edit__form-right">
             <v-col cols="12">
@@ -108,7 +116,7 @@
                 label="自由記述覧(任意)"
                 v-model="todo.text"
                 outlined
-                rows="7"
+                rows="8"
               ></v-textarea>
             </v-col>
             <v-col cols="12">
@@ -118,7 +126,7 @@
                 counter
                 v-model="todo.resume"
                 outlined
-                rows="7"
+                rows="11"
               ></v-textarea>
             </v-col>
           </v-row>

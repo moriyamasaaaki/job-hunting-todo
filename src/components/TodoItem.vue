@@ -2,7 +2,7 @@
   <v-card class="todo-item mx-auto">
     <v-card-text>
       <div>{{ status }}</div>
-      <p class="display-1 text--primary">{{ name }}</p>
+      <p class="headline mb-5 text--primary">{{ name }}</p>
       <p>日付：{{ months }}月{{ days }}日{{ week }}曜日</p>
       <p>時間帯：{{ time }}</p>
       <p>方法：{{ tool }}</p>
@@ -55,6 +55,17 @@
         </v-tooltip>
       </div>
     </v-card-actions>
+    <div class="text-center">
+      <v-snackbar v-model="snackbar" :timeout="timeout">
+        {{ snackbarText }}
+
+        <template v-slot:action="{ attrs }">
+          <v-btn color="blue" text v-bind="attrs" @click="snackbar = false">
+            Close
+          </v-btn>
+        </template>
+      </v-snackbar>
+    </div>
   </v-card>
 </template>
 
@@ -62,6 +73,11 @@
 import { mapActions } from "vuex";
 
 export default {
+  data: () => ({
+    snackbar: false,
+    snackbarText: "削除しました",
+    timeout: 3000
+  }),
   props: {
     id: {
       type: String,
@@ -89,6 +105,9 @@ export default {
     months: {
       type: Number
     },
+    url: {
+      type: String
+    },
     days: {
       type: Number
     },
@@ -100,6 +119,7 @@ export default {
     deleteConfirm(id, name) {
       if (confirm(`${name}のToDoを本当に削除してもよろしいですか？`)) {
         this.deleteTodo({ id });
+        this.snackbar = true;
       }
     },
     ...mapActions(["deleteTodo"])

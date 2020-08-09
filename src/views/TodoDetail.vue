@@ -8,6 +8,10 @@
         <p>{{ todo.months }}月{{ todo.days }}日{{ todo.week }}曜日</p>
         <p>{{ todo.time }}</p>
         <p>面接方法：{{ todo.tool }}</p>
+        <p v-if="todo.url">
+          サイトURL:
+          <a :href="todo.url">{{ todo.url }}</a>
+        </p>
         <p class="todo-detail__card-article text--primary" v-if="todo.text">
           自由記述欄：
           <br />
