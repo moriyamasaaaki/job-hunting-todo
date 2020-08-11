@@ -4,12 +4,12 @@
     <div class="site-list__panels">
       <strong class="site-list__panels-title">定番の就活サイト</strong>
       <v-expansion-panels>
-        <v-expansion-panel v-for="(item, i) in itemsOne" :key="i">
+        <v-expansion-panel v-for="(item, i) in jobsOne" :key="i">
           <v-expansion-panel-header
             >{{ i + 1 }}： {{ item.title }}</v-expansion-panel-header
           >
           <v-expansion-panel-content>
-            {{ item.content }}
+            <a :href="item.url">{{ item.url }}</a>
           </v-expansion-panel-content>
         </v-expansion-panel>
       </v-expansion-panels>
@@ -17,12 +17,12 @@
     <div class="site-list__panels">
       <strong class="site-list__panels-title">特化型就活サイト</strong>
       <v-expansion-panels>
-        <v-expansion-panel v-for="(item, i) in itemsSecond" :key="i">
+        <v-expansion-panel v-for="(item, i) in jobsSecond" :key="i">
           <v-expansion-panel-header
             >{{ i + 1 }}： {{ item.title }}</v-expansion-panel-header
           >
           <v-expansion-panel-content>
-            {{ item.content }}
+            <a :href="item.url">{{ item.url }}</a>
           </v-expansion-panel-content>
         </v-expansion-panel>
       </v-expansion-panels>
@@ -31,31 +31,50 @@
 </template>
 
 <script>
+import firebase from "firebase";
 export default {
   data: () => ({
-    itemsOne: [
-      { title: "マイナビ", content: "URL入力" },
-      { title: "リクナビ", content: "URL入力" },
-      { title: "キャリタス就活", content: "URL入力" },
-      { title: "あさがくナビ", content: "URL入力" },
-      { title: "アクセス就活", content: "URL入力" },
-      { title: "ブンナビ", content: "URL入力" },
-      { title: "合説ドットコム", content: "URL入力" }
-    ],
-    itemsSecond: [
-      { title: "サポーターズ（地方就活生支援）", content: "URL入力" },
-      { title: "外資就活ドットコム（外資系企業特化）", content: "URL入力" },
-      { title: "CheerCareer（べンチャー企業特化）", content: "URL入力" },
-      { title: "ツノル（中小企業特化）", content: "URL入力" },
-      { title: "マスナビ（広告/Web/マスコミ企業特化）", content: "URL入力" },
-      { title: "スポナビ（体育会系特化）", content: "URL入力" },
-      { title: "アカリクWEB（大学院生特化）", content: "URL入力" },
-      { title: "ナース専科就職ナビ（看護学部特化）", content: "URL入力" },
-      { title: "ファーネット（薬学部特化）", content: "URL入力" },
-      { title: "理系ナビ（理系学部特化）", content: "URL入力" },
-      { title: "秋冬採用ナビ（秋冬就活特化）", content: "URL入力" }
-    ]
-  })
+    jobsOne: [],
+    jobsSecond: []
+  }),
+  methods: {
+    getSiteOne() {
+      firebase
+        .firestore()
+        .collection("jobsOne")
+        .get()
+        .then(querySnapshot => {
+          querySnapshot.forEach(doc => {
+            let data = {
+              id: doc.id,
+              title: doc.data().title,
+              url: doc.data().url
+            };
+            this.jobsOne.push(data);
+          });
+        });
+    },
+    getSiteSecond() {
+      firebase
+        .firestore()
+        .collection("jobsSecond")
+        .get()
+        .then(querySnapshot => {
+          querySnapshot.forEach(doc => {
+            let data = {
+              id: doc.id,
+              title: doc.data().title,
+              url: doc.data().url
+            };
+            this.jobsSecond.push(data);
+          });
+        });
+    }
+  },
+  created() {
+    this.getSiteOne();
+    this.getSiteSecond();
+  }
 };
 </script>
 
@@ -75,6 +94,12 @@ export default {
   &__panels-title {
     display: block;
     margin-bottom: 8px;
+  }
+  a {
+    letter-spacing: 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: 15px;
   }
 }
 </style>
