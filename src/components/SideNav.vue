@@ -22,7 +22,7 @@
           <v-list dense>
             <v-list-item link>
               <v-list-item-icon>
-                <v-icon>{{ item.icon }}</v-icon>
+                <v-icon :color="item.color">{{ item.icon }}</v-icon>
               </v-list-item-icon>
 
               <v-list-item-content>
@@ -42,9 +42,24 @@ export default {
   data() {
     return {
       items: [
-        { title: "ToDoリスト", icon: "mdi-home", link: "/todos" },
-        { title: "プロフィール", icon: "mdi-account", link: "/profile" },
-        { title: "就活サイト一覧", icon: "mdi-web", link: "/site/list" }
+        {
+          title: "ToDoリスト",
+          icon: "mdi-home",
+          link: "/todos",
+          color: "red"
+        },
+        {
+          title: "プロフィール",
+          icon: "mdi-account",
+          link: "/profile",
+          color: "blue-grey darken-2"
+        },
+        {
+          title: "就活サイト一覧",
+          icon: "mdi-web",
+          link: "/site/list",
+          color: "blue darken-2"
+        }
       ]
     };
   },
