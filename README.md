@@ -29,10 +29,7 @@ URL: https://job-hunting-todo.herokuapp.com/
 
 ##### バグ・今後の追加項目
 バグ
-- ToDoを作成時にページを再読み込みしないとToDoがViewに反映されないです。
-
-追加項目
-- このサービスの使い方がわかるようなページがあると良いので今後追加予定
+- ToDoを作成時にページを再読み込みしないとToDoがViewに反映されないので今後改善。
 
 --- 
 [![Image from Gyazo](https://i.gyazo.com/9704334faee1dec686d14e2ae40effbd.png)](https://gyazo.com/9704334faee1dec686d14e2ae40effbd)
